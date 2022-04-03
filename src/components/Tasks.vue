@@ -1,8 +1,9 @@
 <template>
   <ul class="tasks-list">
     <li :key="task.id" v-for="task in tasks"
-        :class="[task.reminder && 'reminder', 'task-item']">
-      <Task :task="task"/>
+        :class="[task.reminder && 'reminder', 'task-item']"
+        @click="$emit('toggle-reminder', task.id)">
+      <Task :task="task" @delete-task="$emit('delete-task', task.id)"/>
     </li>
   </ul>
 </template>
@@ -17,7 +18,7 @@
     },
     components: {
       Task,
-    }
+    },
   }
 </script>
 
@@ -30,6 +31,8 @@
       border-radius: 6px;
       display: flex;
       justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
       &.reminder {
         border-left: 4px solid #7bd077;
         padding: 10px 10px 10px 6px;

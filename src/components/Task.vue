@@ -4,7 +4,7 @@
     <p class="task-list__inner-day">{{task.day}}</p>
   </div>
 
-  <Button text="Delete"/>
+  <Button text="Delete" @click="$emit('delete-task', task.id)"/>
 </template>
 
 <script>
@@ -17,7 +17,8 @@
     },
     components: {
       Button,
-    }
+    },
+    emits: ['delete-task'],
   }
 </script>
 

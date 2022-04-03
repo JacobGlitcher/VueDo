@@ -6,7 +6,7 @@
       <Button text="Add a Task"/>
     </div>
 
-    <Tasks :tasks="tasks"/>
+    <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
   </div>
 </template>
 
@@ -47,7 +47,29 @@
           day: 'March 3rd at 15:00',
           reminder: false,
         },
+        {
+          id: 4,
+          text: 'School project',
+          day: 'March 3rd at 16:00',
+          reminder: true,
+        },
+        {
+          id: 5,
+          text: 'Movie watching',
+          day: 'March 3rd at 18:00',
+          reminder: false,
+        },
       ]
+    },
+    methods: {
+      deleteTask(id) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
+      },
+      toggleReminder(id) {
+        this.tasks = this.tasks.map((task) => {
+          return task.id === id ? {...task, reminder: !task.reminder} : task
+        });
+      }
     },
   }
 </script>
