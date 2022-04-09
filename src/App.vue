@@ -6,6 +6,8 @@
       <Button text="Add a Task"/>
     </div>
 
+    <AddTask/>
+
     <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
   </div>
 </template>
@@ -14,10 +16,12 @@
   import Header from "./components/Header.vue";
   import Button from "./components/Button.vue";
   import Tasks from "./components/Tasks.vue";
+  import AddTask from "./components/AddTask.vue";
 
   export default {
     name: 'App',
     components: {
+      AddTask,
       Header,
       Button,
       Tasks,
