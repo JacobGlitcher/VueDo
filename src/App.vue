@@ -6,7 +6,7 @@
       <Button text="Add a Task"/>
     </div>
 
-    <AddTask/>
+    <AddTask @add-task="addTask"/>
 
     <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
   </div>
@@ -34,33 +34,21 @@
     created() {
       this.tasks = [
         {
-          id: 1,
+          id: 0,
           text: 'Doctor appointment',
           day: 'March 1st at 12:15',
           reminder: true,
         },
         {
-          id: 2,
+          id: 1,
           text: 'Meeting at school',
           day: 'March 3rd at 10:30',
           reminder: true,
         },
         {
-          id: 3,
+          id: 2,
           text: 'Food shopping',
           day: 'March 3rd at 15:00',
-          reminder: false,
-        },
-        {
-          id: 4,
-          text: 'School project',
-          day: 'March 3rd at 16:00',
-          reminder: true,
-        },
-        {
-          id: 5,
-          text: 'Movie watching',
-          day: 'March 3rd at 18:00',
           reminder: false,
         },
       ]
@@ -73,6 +61,11 @@
         this.tasks = this.tasks.map((task) => {
           return task.id === id ? {...task, reminder: !task.reminder} : task
         });
+      },
+      addTask(newTask) {
+        this.tasks = [...this.tasks, newTask];
+
+        this.tasks.forEach((task, index) => task.id = index);
       }
     },
   }

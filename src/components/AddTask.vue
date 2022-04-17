@@ -30,7 +30,7 @@
 
 <script>
   import useVuelidate from '@vuelidate/core';
-  import {required, maxLength, alpha, alphaNum} from '@vuelidate/validators';
+  import {required, maxLength} from '@vuelidate/validators';
 
   export default {
     name: 'AddTask',
@@ -44,8 +44,8 @@
     },
     validations() {
       return {
-        text: {required, maxLength: maxLength(50), alpha},
-        day: {required, maxLength: maxLength(50), alphaNum},
+        text: {required, maxLength: maxLength(50)},
+        day: {required, maxLength: maxLength(50)},
       }
     },
     methods: {
@@ -54,12 +54,23 @@
 
         this.v$.$validate();
 
-        if(!this.v$.$error) {
-          console.log(111);
+        if(this.v$.$error) {
           return;
         }
 
-        console.log(222);
+        const newTask = {
+          text: this.text,
+          day: this.day,
+          reminder: this.reminder,
+        }
+
+        this.$emit('add-task', newTask);
+
+        this.text = '';
+        this.day = '';
+        this.reminder = false;
+
+        this.v$.$reset();
       }
     }
   }
