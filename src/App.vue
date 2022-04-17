@@ -3,10 +3,10 @@
     <div class="top-section">
       <Header msg="Task Tracker"/>
 
-      <Button text="Add a Task"/>
+      <Button :text="showForm ? 'Close' : 'Add a Task'" @click="toggleForm"/>
     </div>
 
-    <AddTask @add-task="addTask"/>
+    <AddTask v-if="showForm" @add-task="addTask"/>
 
     <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
   </div>
@@ -28,7 +28,8 @@
     },
     data() {
       return {
-        tasks: []
+        tasks: [],
+        showForm: false,
       }
     },
     created() {
@@ -66,6 +67,9 @@
         this.tasks = [...this.tasks, newTask];
 
         this.tasks.forEach((task, index) => task.id = index);
+      },
+      toggleForm() {
+        this.showForm = !this.showForm;
       }
     },
   }
