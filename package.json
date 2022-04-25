@@ -2,13 +2,15 @@
   "name": "vue-project",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3000",
     "build": "vite build",
-    "preview": "vite preview --port 5050"
+    "preview": "vite preview --port 5050",
+    "backend": "json-server --watch db.json --port 5050"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.0-alpha.40",
     "@vuelidate/validators": "^2.0.0-alpha.28",
+    "json-server": "^0.17.0",
     "vue": "^3.2.31"
   },
   "devDependencies": {

@@ -32,27 +32,8 @@
         showForm: false,
       }
     },
-    created() {
-      this.tasks = [
-        {
-          id: 0,
-          text: 'Doctor appointment',
-          day: 'March 1st at 12:15',
-          reminder: true,
-        },
-        {
-          id: 1,
-          text: 'Meeting at school',
-          day: 'March 3rd at 10:30',
-          reminder: true,
-        },
-        {
-          id: 2,
-          text: 'Food shopping',
-          day: 'March 3rd at 15:00',
-          reminder: false,
-        },
-      ]
+    async created() {
+      this.tasks = await this.fetchTasks();
     },
     methods: {
       deleteTask(id) {
@@ -70,6 +51,11 @@
       },
       toggleForm() {
         this.showForm = !this.showForm;
+      },
+      async fetchTasks() {
+        const res = await fetch('http://localhost:5050/tasks');
+
+        return await res.json();
       }
     },
   }
