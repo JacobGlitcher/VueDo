@@ -77,8 +77,6 @@
         const data = await res.json();
 
         this.tasks = [...this.tasks, data];
-
-        this.tasks.forEach((task, index) => task.id = index);
       },
       toggleForm() {
         this.showForm = !this.showForm;
