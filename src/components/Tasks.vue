@@ -2,7 +2,7 @@
   <ul class="tasks-list">
     <li :key="task.id" v-for="task in tasks"
         :class="[task.reminder && 'reminder', 'task-item']"
-        @click="$emit('toggle-reminder', task.id)">
+        @click.self="$emit('toggle-reminder', task.id)">
       <Task :task="task" @delete-task="$emit('delete-task', task.id)"/>
     </li>
   </ul>
