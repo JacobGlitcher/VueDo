@@ -44,8 +44,18 @@
           return task.id === id ? {...task, reminder: !task.reminder} : task
         });
       },
-      addTask(newTask) {
-        this.tasks = [...this.tasks, newTask];
+      async addTask(newTask) {
+        const res = await fetch('api/tasks', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(newTask)
+        });
+
+        const data = await res.json();
+
+        this.tasks = [...this.tasks, data];
 
         this.tasks.forEach((task, index) => task.id = index);
       },
