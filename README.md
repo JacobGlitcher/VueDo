@@ -22,6 +22,12 @@ npm install
 npm run dev
 ```
 
+### Hot-Reload "backend" db.json File for Development
+
+```sh
+npm run backend
+```
+
 ### Compile and Minify for Production
 
 ```sh

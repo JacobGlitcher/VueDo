@@ -53,7 +53,12 @@
         this.showForm = !this.showForm;
       },
       async fetchTasks() {
-        const res = await fetch('http://localhost:5050/tasks');
+        const res = await fetch('api/tasks');
+
+        return await res.json();
+      },
+      async fetchTask(id) {
+        const res = await fetch(`api/tasks/${id}`);
 
         return await res.json();
       }
