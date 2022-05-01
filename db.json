@@ -7,15 +7,9 @@
       "id": 1
     },
     {
-      "text": "test 2 ",
-      "day": "test 2 time",
-      "reminder": true,
-      "id": 2
-    },
-    {
       "text": "test 3 ",
       "day": "test 3 time",
-      "reminder": false,
+      "reminder": true,
       "id": 3
     },
     {

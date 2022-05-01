@@ -8,7 +8,7 @@
 
     <router-view :showForm="showForm"></router-view>
 
-    <RecentTasksLink/>
+    <RecentTasksLink :to="to" :text="text"/>
   </div>
 </template>
 
@@ -27,6 +27,8 @@
     data() {
       return {
         showForm: false,
+        to: '/recent',
+        text: 'Go To Recent Tasks'
       }
     },
     methods: {
@@ -36,7 +38,17 @@
     },
     computed: {
       homePage() {
-        return this.$route.path === '/';
+        if (this.$route.path === '/') {
+          this.to = '/recent';
+          this.text = 'Go To Recent Tasks';
+
+          return true;
+        } else {
+          this.to = '/';
+          this.text = 'Go Back';
+
+          return false;
+        }
       }
     }
   }
@@ -48,6 +60,7 @@
   body {
     font-family: Calibri, sans-serif;
     padding: 15px;
+    background-color: #e4ebeb;
   }
 
   .all-wrapper {

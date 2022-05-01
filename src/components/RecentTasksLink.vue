@@ -1,11 +1,21 @@
 <template>
   <div class="recent-tasks">
-    <router-link to="/recent" class="lnk">Go To Recent Tasks</router-link>
+    <router-link :to="to" class="lnk">{{text}}</router-link>
   </div>
 </template>
 
 <script>
-
+export default {
+  name: 'RecentTasksLink',
+  data() {
+    return {
+    }
+  },
+  props: {
+    to: String,
+    text: String,
+  }
+}
 </script>
 
 <style lang="scss" scoped>
