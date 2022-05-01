@@ -1,6 +1,6 @@
 <template>
   <div class="recent-tasks">
-    <a href="/recent" class="lnk">Go To Recent Tasks</a>
+    <router-link to="/recent" class="lnk">Go To Recent Tasks</router-link>
   </div>
 </template>
 

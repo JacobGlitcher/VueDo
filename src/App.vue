@@ -3,99 +3,42 @@
     <div class="top-section">
       <Header msg="Task Tracker"/>
 
-      <Button :text="showForm ? 'Close' : 'Add a Task'" @click="toggleForm"/>
+      <Button v-if="homePage" :text="showForm ? 'Close' : 'Add a Task'" @click="toggleForm"/>
     </div>
 
-    <AddTask v-if="showForm" @add-task="addTask"/>
+    <router-view :showForm="showForm"></router-view>
 
-    <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
-
-    <RecentTasks/>
+    <RecentTasksLink/>
   </div>
 </template>
 
 <script>
   import Header from "./components/Header.vue";
   import Button from "./components/Button.vue";
-  import Tasks from "./components/Tasks.vue";
-  import AddTask from "./components/AddTask.vue";
-  import RecentTasks from "./components/RecentTasks.vue";
+  import RecentTasksLink from "./components/RecentTasksLink.vue";
 
   export default {
     name: 'App',
     components: {
-      AddTask,
       Header,
       Button,
-      Tasks,
-      RecentTasks
+      RecentTasksLink,
     },
     data() {
       return {
-        tasks: [],
         showForm: false,
       }
     },
-    async created() {
-      this.tasks = await this.fetchTasks();
-    },
     methods: {
-      async deleteTask(id) {
-        const res = await fetch(`api/tasks/${id}`, {
-          method: 'DELETE',
-        });
-
-        if (res.status === 200) {
-          this.tasks = this.tasks.filter((task) => task.id !== id);
-        } else {
-          console.log(res.status);
-        }
-      },
-      async toggleReminder(id) {
-        const toggleTask = await this.fetchTask(id);
-        const updatedTask = {...toggleTask, reminder: !toggleTask.reminder}
-
-        const res = await fetch(`api/tasks/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(updatedTask)
-        });
-
-        const data = await res.json();
-
-        this.tasks = this.tasks.map((task) => {
-          return task.id === id ? {...task, reminder: data.reminder} : task
-        });
-      },
-      async addTask(newTask) {
-        const res = await fetch('api/tasks', {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(newTask)
-        });
-
-        const data = await res.json();
-
-        this.tasks = [...this.tasks, data];
-      },
       toggleForm() {
         this.showForm = !this.showForm;
       },
-      async fetchTasks() {
-        const res = await fetch('api/tasks');
-
-        return await res.json();
-      },
-      async fetchTask(id) {
-        const res = await fetch(`api/tasks/${id}`);
-
-        return await res.json();
-      }
     },
+    computed: {
+      homePage() {
+        return this.$route.path === '/';
+      }
+    }
   }
 </script>
 

@@ -17,6 +17,12 @@
       "day": "test 3 time",
       "reminder": false,
       "id": 3
+    },
+    {
+      "text": "test 4",
+      "day": "test 4 time",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
