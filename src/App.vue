@@ -9,6 +9,8 @@
     <AddTask v-if="showForm" @add-task="addTask"/>
 
     <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
+
+    <RecentTasks/>
   </div>
 </template>
 
@@ -17,6 +19,7 @@
   import Button from "./components/Button.vue";
   import Tasks from "./components/Tasks.vue";
   import AddTask from "./components/AddTask.vue";
+  import RecentTasks from "./components/RecentTasks.vue";
 
   export default {
     name: 'App',
@@ -25,6 +28,7 @@
       Header,
       Button,
       Tasks,
+      RecentTasks
     },
     data() {
       return {
@@ -107,7 +111,7 @@
     border: 1px solid #3defb8;
     border-radius: 6px;
     padding: 15px;
-    margin: 20px;
+    margin: 45px auto 20px;
     max-width: 450px;
     font-size: 16px;
     .top-section {

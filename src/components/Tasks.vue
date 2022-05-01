@@ -33,6 +33,10 @@
       justify-content: space-between;
       cursor: pointer;
       user-select: none;
+      &:last-child {
+        margin: 0;
+      }
+
       &.reminder {
         border-left: 4px solid #7bd077;
         padding: 10px 10px 10px 6px;
