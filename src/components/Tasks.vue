@@ -54,5 +54,12 @@
       border-left: 13px transparent solid;
       background-clip: padding-box;
     }
+
+    &.recent-tasks-list {
+      .task-item {
+        cursor: unset;
+        user-select: unset;
+      }
+    }
   }
 </style>

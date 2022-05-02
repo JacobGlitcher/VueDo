@@ -23,17 +23,20 @@
 </script>
 
 <style lang="scss" scoped>
-  p {
-    font-size: 18px;
-  }
+  .text-section {
+    pointer-events: none;
+    p {
+      font-size: 18px;
+    }
 
-  .task-list__inner-title {
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
+    .task-list__inner-title {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
 
-  .task-list__inner-day {
-    font-size: 16px;
-    font-style: italic;
+    .task-list__inner-day {
+      font-size: 16px;
+      font-style: italic;
+    }
   }
 </style>
