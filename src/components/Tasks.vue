@@ -24,6 +24,8 @@
 
 <style lang="scss" scoped>
   .tasks-list {
+    max-height: 335px;
+    overflow-y: auto;
     .task-item {
       margin-bottom: 10px;
       background-color: #f3f3f3;
@@ -41,6 +43,16 @@
         border-left: 4px solid #7bd077;
         padding: 10px 10px 10px 6px;
       }
+    }
+
+    &::-webkit-scrollbar {
+      width: 18px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #7bd077;
+      border-left: 13px transparent solid;
+      background-clip: padding-box;
     }
   }
 </style>

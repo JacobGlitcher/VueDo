@@ -7,16 +7,16 @@
       "id": 1
     },
     {
-      "text": "test 3 ",
+      "text": "test 2",
+      "day": "test 2 time",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "test 3",
       "day": "test 3 time",
       "reminder": true,
       "id": 3
-    },
-    {
-      "text": "test 4",
-      "day": "test 4 time",
-      "reminder": true,
-      "id": 4
     }
   ]
 }
