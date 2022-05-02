@@ -4,7 +4,7 @@
     <p class="task-list__inner-day">{{task.day}}</p>
   </div>
 
-  <Button text="Delete" @click="$emit('delete-task', task.id)"/>
+  <Button v-if="homePage" text="Delete" @click="$emit('delete-task', task.id)"/>
 </template>
 
 <script>
@@ -17,6 +17,11 @@
     },
     components: {
       Button,
+    },
+    computed: {
+      homePage() {
+        return this.$route.path === '/';
+      }
     },
     emits: ['delete-task'],
   }
