@@ -2,15 +2,19 @@
   <h1>Recent Tasks:</h1>
 
   <Tasks :tasks="tasks" class="recent-tasks-list"/>
+
+  <RecentTasksLink :to="to" :text="text"/>
 </template>
 
 <script>
 import Tasks from "../components/Tasks.vue";
+import RecentTasksLink from "../components/RecentTasksLink.vue";
 
 export default {
   name: 'RecentTasks',
   components: {
     Tasks,
+    RecentTasksLink,
   },
   data() {
     return {
@@ -18,7 +22,9 @@ export default {
     }
   },
   props: {
-    showForm: Boolean
+    showForm: Boolean,
+    to: String,
+    text: String,
   },
   async created() {
     const fetchedTasks = await this.fetchTasks();

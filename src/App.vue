@@ -6,23 +6,19 @@
       <Button v-if="homePage" :text="showForm ? 'Close' : 'Add a Task'" @click="toggleForm"/>
     </div>
 
-    <router-view :showForm="showForm"></router-view>
-
-    <RecentTasksLink :to="to" :text="text"/>
+    <router-view :showForm="showForm" :to="to" :text="text"></router-view>
   </div>
 </template>
 
 <script>
   import Header from "./components/Header.vue";
   import Button from "./components/Button.vue";
-  import RecentTasksLink from "./components/RecentTasksLink.vue";
 
   export default {
     name: 'App',
     components: {
       Header,
       Button,
-      RecentTasksLink,
     },
     data() {
       return {

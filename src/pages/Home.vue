@@ -2,20 +2,26 @@
   <AddTask v-if="showForm" @add-task="addTask"/>
 
   <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
+
+  <RecentTasksLink v-if="tasks.length" :to="to" :text="text"/>
 </template>
 
 <script>
   import Tasks from "../components/Tasks.vue";
   import AddTask from "../components/AddTask.vue";
+  import RecentTasksLink from "../components/RecentTasksLink.vue";
 
   export default {
     name: 'Home',
     components: {
       AddTask,
       Tasks,
+      RecentTasksLink,
     },
     props: {
-      showForm: Boolean
+      showForm: Boolean,
+      to: String,
+      text: String,
     },
     data() {
       return {
