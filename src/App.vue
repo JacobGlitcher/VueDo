@@ -6,7 +6,7 @@
       <Button v-if="homePage" :text="showForm ? 'Close' : 'Add a Task'" @click="toggleForm"/>
     </div>
 
-    <router-view :showForm="showForm" :to="to" :text="text"></router-view>
+    <router-view :showForm="showForm"></router-view>
   </div>
 </template>
 
@@ -23,8 +23,6 @@
     data() {
       return {
         showForm: false,
-        to: '/recent',
-        text: 'Go To Recent Tasks'
       }
     },
     methods: {
@@ -34,17 +32,7 @@
     },
     computed: {
       homePage() {
-        if (this.$route.path === '/') {
-          this.to = '/recent';
-          this.text = 'Go To Recent Tasks';
-
-          return true;
-        } else {
-          this.to = '/';
-          this.text = 'Go Back';
-
-          return false;
-        }
+        return this.$route.path === '/';
       }
     }
   }

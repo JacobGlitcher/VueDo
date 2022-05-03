@@ -3,7 +3,7 @@
 
   <Tasks :tasks="tasks" @delete-task="deleteTask" @toggle-reminder="toggleReminder"/>
 
-  <RecentTasksLink v-if="tasks.length" :to="to" :text="text"/>
+  <RecentTasksLink v-if="tasks.length" to="/recent" text="Go To Recent Tasks"/>
 </template>
 
 <script>
@@ -20,8 +20,6 @@
     },
     props: {
       showForm: Boolean,
-      to: String,
-      text: String,
     },
     data() {
       return {

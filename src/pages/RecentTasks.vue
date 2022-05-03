@@ -3,7 +3,7 @@
 
   <Tasks :tasks="tasks" class="recent-tasks-list"/>
 
-  <RecentTasksLink :to="to" :text="text"/>
+  <RecentTasksLink to="/" text="Go Back"/>
 </template>
 
 <script>
@@ -23,8 +23,6 @@ export default {
   },
   props: {
     showForm: Boolean,
-    to: String,
-    text: String,
   },
   async created() {
     const fetchedTasks = await this.fetchTasks();
